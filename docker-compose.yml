@@ -1,14 +1,14 @@
-version: "3.8"
+version: '3'
 
 services:
   web:
     build: ./app
     ports:
       - "4000:4000"
-    environment:
-      - FLASK_APP=app.py
     depends_on:
       - elasticsearch
+    networks:
+      - es-net
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.13.4
@@ -16,3 +16,10 @@ services:
       - discovery.type=single-node
     ports:
       - "9200:9200"
+      - "9300:9300"
+    networks:
+      - es-net
+
+networks:
+  es-net:
+    driver: bridge
