@@ -1,5 +1,0 @@
-redis>=5.0.0
-Flask>=2.3.2
-requests>=2.31.0
-elasticsearch>=8.10.0
-flask-caching>=1.11.1

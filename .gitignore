@@ -1,0 +1,57 @@
+# Ignore the virtual environment
+venv/
+__pycache__/
+
+# Ignore Python cache files
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+# Ignore configuration files that might contain sensitive information
+*.env
+.env
+
+# Ignore log files
+*.log
+logs/
+
+# Ignore Docker-related files and directories
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Ignore IDE project files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore test files and coverage reports
+tests/
+*.coverage
+.coverage.*
+.coverage
+.cache
+junit.xml
+nosetests.xml
+coverage.xml
+
+# Ignore documentation
+docs/
+
+# Ignore files related to CI/CD
+.github/
+.gitlab-ci.yml
+.circleci/
+
+# Ignore temporary files or local system files
+*.swp
+*~
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store
+
+# Ignore node_modules if you have frontend-related files
+node_modules/
