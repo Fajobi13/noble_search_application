@@ -5,16 +5,41 @@ services:
       - "4000:4000"
     depends_on:
       - mongodb
+      - redis
+    environment:
+      - FLASK_ENV=development
+      - REDIS_HOST=redis  # Reference Redis service by name
+      - REDIS_PORT=6379
+      - MONGO_HOST=mongodb  # Reference MongoDB service by name
+      - MONGO_PORT=27017
+    volumes:
+      - .:/app
+    command: python3 main.py
     networks:
-      - mongo-net
+      - app-network  # Specify the custom network
 
   mongodb:
-    image: mongo:6.0
+    image: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - mongodata:/data/db
     networks:
-      - mongo-net
+      - app-network  # Specify the custom network
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+    networks:
+      - app-network  # Specify the custom network
+
+volumes:
+  mongodata:
+  redisdata:
 
 networks:
-  mongo-net:
+  app-network:  # Define a custom network for your services
     driver: bridge
